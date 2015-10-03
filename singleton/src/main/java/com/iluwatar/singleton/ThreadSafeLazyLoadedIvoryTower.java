@@ -2,26 +2,22 @@ package com.iluwatar.singleton;
 
 /**
  * Thread-safe Singleton class.
- * The instance is lazily initialized and thus needs synchronization
- * mechanism.
+ * This doesnt need synchronization, it is also singleton and also uses static factory innitialization.
+ * Please note getInstance is not needed, but only there to ensure loozed coupling and adaptability with other 
+ * codes.
  */
-public class ThreadSafeLazyLoadedIvoryTower {
+public enum ThreadSafeLazyLoadedIvoryTower {
 
-  private static ThreadSafeLazyLoadedIvoryTower instance = null;
+  INSTANCE;
 
-  private ThreadSafeLazyLoadedIvoryTower() {
-  }
-
+   
   /**
-   * The instance gets created only when it is called for first time.
-   * Lazy-loading
+   * Note: This is not needed, you can call ThreadSafeLazyLoadedIvoryTower.INSTANCE which is the equivalent and 
+   * elegant.
    */
-  public synchronized static ThreadSafeLazyLoadedIvoryTower getInstance() {
+  public  static ThreadSafeLazyLoadedIvoryTower getInstance() {
+ 
 
-    if (instance == null) {
-      instance = new ThreadSafeLazyLoadedIvoryTower();
-    }
-
-    return instance;
+    return INSTANCE;
   }
 }
